@@ -1,0 +1,45 @@
+<?php
+
+include "../conexiones/conexion.php";
+
+
+// Verificar si el formulario ha sido enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Obtener los datos del formulario
+    $nombre = $_POST['nombre'];
+    $precio = $_POST['precio'];
+    $tipo = $_POST['tipo'];
+    $genero = $_POST['genero'];
+    $cantidad = $_POST['cantidad'];
+
+    // Preparar la consulta SQL
+    $sql = "INSERT INTO productos (nombre,precio,tipo,genero,cantidad)
+            VALUES (?, ?, ?, ?, ?)";
+
+    // Preparar el statement
+    if ($stmt = $conn->prepare($sql)) {
+        // Enlazar los parámetros
+        // Asegúrate de que el número de parámetros coincide con los valores de la consulta SQL
+        $stmt->bind_param("sdssd", $nombre,$precio,$tipo,$genero,$cantidad);
+
+        // Ejecutar el statement
+        if ($stmt->execute()) {
+
+            header("Location:./tables.php");
+
+        } else {
+            echo "Error al guardar los datos: " . $conn->error;
+        }
+
+        // Cerrar el statement
+        $stmt->close();
+    } else {
+        echo "Error al preparar la consulta: " . $conn->error;
+    }
+}
+
+// Cerrar la conexión
+$conn->close();
+
+?>

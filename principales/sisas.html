@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseñador de Suéter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        #designArea {
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        #sueteR {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        
+        #previewContainer {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        #previewLabel {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        #imagenPreview {
+            max-width: 100%;
+            height: auto;
+            display: none;
+            margin-top: 10px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .file-input {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diseñador de Suéter Personalizado</h1>
+    
+    <div class="file-input">
+        <input type="file" id="fileInput" accept="image/*">
+        <p>Sube tu logo o diseño para personalizar el suéter</p>
+    </div>
+    
+    <div id="designArea">
+        <img id="sueteR" src="../imagenes/sueterazuldelante.png" alt="Suéter base">
+    </div>
+    
+    <button id="generateBtn">Generar Diseño</button>
+    
+    <div id="previewContainer">
+        <label id="previewLabel">Vista previa de tu diseño:</label>
+        <img id="imagenPreview">
+    </div>
+    
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const fileInput = document.getElementById('fileInput');
+            const generateBtn = document.getElementById('generateBtn');
+            const previewImg = document.getElementById('imagenPreview');
+            const sweaterImg = document.getElementById('sueteR');
+            
+            // Ajustar el tamaño del canvas cuando la imagen del suéter cargue
+            sweaterImg.onload = function() {
+                canvas.width = this.naturalWidth;
+                canvas.height = this.naturalHeight;
+            };
+            
+            // Cargar la imagen personalizada
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        // No mostramos la imagen movible, solo la usaremos para combinar
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Generar el diseño combinado
+            generateBtn.addEventListener('click', function() {
+                // Dibujar el suéter base en el canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(sweaterImg, 0, 0, canvas.width, canvas.height);
+                
+                // Si hay una imagen cargada, dibujarla en el centro
+                if (fileInput.files.length > 0) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const logoImg = new Image();
+                        logoImg.onload = function() {
+                            // Tamaño del logo (ajustar según necesites)
+                            const logoWidth = logoImg.naturalWidth / 2;
+                            const logoHeight = logoImg.naturalHeight / 2;
+                            
+                            // Posición centrada
+                            const x = (canvas.width - logoWidth) / 2;
+                            const y = (canvas.height - logoHeight) / 2;
+                            
+                            ctx.drawImage(logoImg, x, y, logoWidth, logoHeight);
+                            
+                            // Mostrar el resultado en el label
+                            previewImg.src = canvas.toDataURL("image/png");
+                            previewImg.style.display = "block";
+                        };
+                        logoImg.src = event.target.result;
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    // Si no hay imagen cargada, mostrar solo el suéter
+                    previewImg.src = canvas.toDataURL("image/png");
+                    previewImg.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
