@@ -1,0 +1,244 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../imagenes/logo_tienda.png">
+    <title>Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/index_css.css">
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg">
+
+        <div class="container">
+                <div class="d-flex align-items-end ms-5">
+                    <a class="logo" href="main.php">
+                        <img src="../imagenes/Armario Virtual.png" alt="">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse justify-content-center" id="mi-menu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" style="border-bottom: 5px solid #addd; text-decoration: none; color: rgba(255, 255, 255, 0.867);" href="main.php">Inicio</a>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="hombress.php">Hombre</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="mujer.php">Mujer</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex align-items-end ms-5">
+                        <div class="dropdown-container" id="dropdown-container"
+                            
+                            data-sesion="<?php echo isset($_SESSION['nombre']) ? 'true' : 'false'; ?>">
+
+                            <?php if(isset($_SESSION['nombre'])): ?>
+                                <span style="color: white;"><?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
+                            <?php endif; ?>
+                
+                            <img src="https://cdn-icons-png.flaticon.com/512/9777/9777892.png" alt="" class="img-thumbnail ms-auto">
+                    
+                            <div class="dropdown-content" id="dropdown-content">
+                                <a href="Login.html">Iniciar Sesión</a>
+                                <a href="Registro.html">Registrarme</a>
+                                <a href="perfil.php" id="perfil" style="display: none;">Perfil</a>
+                                <a href="../conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
+                            </div>
+                        </div>
+        
+                        <div class="bolsa-container" style="position: relative; display: inline-block;" onclick="accederAlCarrito()">
+                            
+                            <img src="https://cdn-icons-png.flaticon.com/512/11544/11544758.png" alt="" class="bolsa ms-auto">
+                            
+                            <div class="notification-badge"> <?php echo $total_registros; ?> </div>
+                        </div>
+                </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="content">
+            <div id="sidebar" class="sidebar">
+                <a href="main.php">Inicio</a>
+                <a href="hombress.php">Hombre</a>
+                <a href="mujer.php">Mujer</a>
+                <a href="Diseño.php">Tu diseño</a>
+            </div>
+
+            <input type="checkbox" id="checkbox">
+            <label for="checkbox" class="toggle" onclick="toggleSidebar()">
+                <div class="bars" id="bar1"></div>
+                <div class="bars" id="bar2"></div>
+                <div class="bars" id="bar3"></div>
+            </label>
+        </div>
+    </main>
+</header>
+
+
+<script>
+    function accederAlCarrito() {
+        const usuarioLogueado = <?php echo $usuarioLogueado; ?>;
+        
+        if (usuarioLogueado) {
+            window.location.href = 'carrito.php';
+        } else {
+            alert('Debes iniciar sesión para acceder al carrito.');
+        }
+    }
+</script>
+
+<style>
+    .notification-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    // Maneja el clic en el contenedor del dropdown
+    document.getElementById('dropdown-container').addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita que el evento se propague
+        
+        const dropdown = document.getElementById('dropdown-content');
+        const botonCerrar = document.getElementById('cerrar');
+        const botonPerfil = document.getElementById('perfil');
+        
+        // Verifica si el usuario está logueado (usando el atributo data)
+        const usuarioLogueado = this.getAttribute('data-sesion') === 'true';
+        
+        if (usuarioLogueado) {
+            // Mostrar solo el botón de cerrar sesión
+            botonCerrar.style.display = 'block';
+            botonPerfil.style.display = 'block';
+            // Ocultar otros enlaces
+            document.querySelectorAll('#dropdown-content a:not(#cerrar,#perfil)').forEach(enlace => {
+                enlace.style.display = 'none';
+            });
+        } else {
+            // Mostrar opciones normales (login/registro)
+            botonCerrar.style.display = 'none';
+            botonPerfil.style.display = 'none';
+            document.querySelectorAll('#dropdown-content a:not(#cerrar,#perfil)').forEach(enlace => {
+                enlace.style.display = 'block';
+            });
+        }
+    
+        // Alternar la visibilidad del dropdown
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Cerrar el dropdown al hacer clic fuera
+    document.addEventListener('click', function() {
+        document.getElementById('dropdown-content').style.display = 'none';
+    });
+
+
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+        } else {
+            sidebar.style.width = "250px";
+        }
+    }
+
+    function mostrarImagenAleatoria() {
+
+        var imagenes = [
+            "https://images.unsplash.com/photo-1487452066049-a710f7296400?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D",
+            "https://bitlysdowssl-aws.com/wp-content/uploads/2022/10/scc-2.jpg",
+            "https://wallpapers.com/images/hd/urban-background-vu817dy8f93zlf3h.jpg"
+        ];
+
+        var indiceAleatorio = Math.floor(Math.random() * imagenes.length);
+
+        document.getElementById("imagenAleatoria").src = imagenes[indiceAleatorio];
+        cambiarTexto(indiceAleatorio);
+
+        var imagenElemento = document.getElementById("imagenAleatoria");
+        imagenElemento.onclick = function () {
+            window.location.href = hipervinculos[indiceAleatorio];
+        };
+    }
+
+    window.onload = mostrarImagenAleatoria;
+</script>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <figure>
+                    <img id="imagenAleatoria" src="" class="img-fluid" alt="Imagen 2"
+                        style="width: 100%; cursor: pointer;">
+                    <figcaption>
+                        <h2 id="textoCambiado"> Armario Virtual</h2>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <hr class="featurette-divider">
+
+
+            <div class="col-lg zoom-container custom-col">
+                <a href="hombress.php">
+                    <img src="../imagenes/sueter_imagen.png"
+                    class="img-fluid zoom-image" alt="Imagen 1">
+                </a>
+            </div>
+            <div class="col-lg zoom-container custom-col">
+                <a href="mujer.php">
+                    <img src="../imagenes/sueter_mujer.png"
+                    class="img-fluid zoom-image" alt="Imagen 1">
+                </a>
+            </div>
+            <div class="col-lg zoom-container custom-col">
+                <a href="Diseño.php">
+                    <img src="../imagenes/diseño_propio.png"
+                    class="img-fluid zoom-image" alt="Imagen 1">
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+<hr class="featurette-divider">
+
+<footer class="container">
+
+    <p class="float-end" style="color: rgb(156, 156, 156);"><a href="#">Back to top</a></p>
+    <p style="color: rgb(156, 156, 156);">&copy; 2024 Company, Inc.</p>
+    <p style="color: rgb(156, 156, 156);"><strong>Contacto:</strong></p>
+    <p style="color: rgb(156, 156, 156);">Teléfono: +57 320 5634901</p>
+    <p style="color: rgb(156, 156, 156);">Correo: ArmarioVirtual@gmail.com</p>
+    <p ><a href="#" style="color: rgb(16, 130, 217);">Sobre Nosotros</a></p>
+    <p><a href="#" style="color: rgb(16, 130, 217);">Servicios</a></p>
+
+</footer>
+
+</html>
