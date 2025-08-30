@@ -1,15 +1,13 @@
-# Imagen oficial de PHP con Apache
-FROM php:8.2-apache
+FROM php:8.1-apache
 
-# Copiar los archivos del proyecto al servidor web
+# Copiar archivos del proyecto
 COPY . /var/www/html/
 
-# Dar permisos adecuados
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+# Dar permisos correctos
+RUN chown -R www-data:www-data /var/www/html
 
-# Exponer el puerto
-EXPOSE 80
+# Exponer el puerto que Render necesita
+EXPOSE 8080
 
-# Iniciar Apache
-CMD ["apache2-foreground"]
+# Apache en modo "foreground" escuchando en el puerto 8080
+CMD ["apache2-foreground", "-DFOREGROUND"]
