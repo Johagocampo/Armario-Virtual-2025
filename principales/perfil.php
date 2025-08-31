@@ -1,6 +1,6 @@
 <?php
 
-include "../conexiones/conexion.php";
+include "conexiones/conexion.php";
 
 $total_registros = 0;
 $cliente = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : null;
@@ -31,11 +31,11 @@ $user = $result->fetch_assoc();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../imagenes/logo_tienda.png">
+    <link rel="icon" href="imagenes/logo_tienda.png">
     <title>Perfil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../principales/css/index_css.css">
+    <link rel="stylesheet" href="css/index_css.css">
 </head>
 
 <header>
@@ -44,7 +44,7 @@ $user = $result->fetch_assoc();
         <div class="container">
                 <div class="d-flex align-items-end ms-5">
                     <a class="logo" href="main.php">
-                        <img src="../imagenes/Armario Virtual.png" alt="">
+                        <img src="Armario Virtual.png" alt="">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse justify-content-center" id="mi-menu">
@@ -78,7 +78,7 @@ $user = $result->fetch_assoc();
                                 <a href="Login.html">Iniciar Sesión</a>
                                 <a href="Registro.html">Registrarme</a>
                                 <a href="perfil.php" id="perfil" style="display: none;">Perfil</a>
-                                <a href="../conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
+                                <a href="conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
                             </div>
                         </div>
         
@@ -154,7 +154,7 @@ $user = $result->fetch_assoc();
             <h2>Mi perfil</h2>
             <br>
 
-            <form action="../conexiones/actualizar.php" method="post">
+            <form action="conexiones/actualizar.php" method="post">
                 <!-- Fila 1: Email y Password -->
                 <div class="row mb-3">
                     <div class="col-md-6">

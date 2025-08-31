@@ -1,5 +1,5 @@
 <?php
-include "../conexiones/conexion.php";
+include "conexiones/conexion.php";
 
 $total_registros = 0;
 $cliente = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : null;
@@ -22,11 +22,11 @@ if ($cliente !== null) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../imagenes/logo_tienda.png">
+    <link rel="icon" href="imagenes/logo_tienda.png">
     <title>Tu Diseño</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../principales/css/index_css.css">
+    <link rel="stylesheet" href="css/index_css.css">
     <style>
         /* Nuevos estilos para las vistas */
         .view-options-container {
@@ -102,7 +102,7 @@ if ($cliente !== null) {
             <div class="container">
                 <div class="d-flex align-items-end ms-5">
                     <a class="logo" href="main.php">
-                        <img src="../imagenes/Armario Virtual.png" alt="">
+                        <img src="imagenes/Armario Virtual.png" alt="">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse justify-content-center" id="mi-menu">
@@ -129,7 +129,7 @@ if ($cliente !== null) {
                             <a href="Login.html">Iniciar Sesión</a>
                             <a href="Registro.html">Registrarme</a>
                             <a href="perfil.php" id="perfil" style="display: none;">Perfil</a>
-                            <a href="../conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
+                            <a href="conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
                         </div>
                     </div>
                     <div class="bolsa-container" style="position: relative; display: inline-block;" onclick="accederAlCarrito()">
@@ -167,7 +167,7 @@ if ($cliente !== null) {
             <div class="row row-cols-1 row-cols-sm-2 g-3">
                 <div class="col">
                     <div style="position: relative; display: inline-block; margin-top: -20px; margin-left: 85px;">
-                        <img style="height: 400px;" id="sueteR" src="../imagenes/sueternegrodelante.png" alt="Suéter">
+                        <img style="height: 400px;" id="sueteR" src="imagenes/sueternegrodelante.png" alt="Suéter">
                         <div id="imageContainer" style="background:transparent; width: 400px; height: 500px; position: relative; color: white; margin-left: 20px; margin-top: -510px;">
                             <img id="movableImage" src="" alt="">
                         </div>
@@ -177,19 +177,19 @@ if ($cliente !== null) {
                     <!-- Nuevo diseño para las opciones de vista -->
                     <div class="view-options-container">
                         <div class="view-option" onclick="seleccionarVista('delante')">
-                            <img id="delante" src="../imagenes/sueternegrodelante.png" alt="Delante">
+                            <img id="delante" src="imagenes/sueternegrodelante.png" alt="Delante">
                             <p>Delante</p>
                         </div>
                         <div class="view-option" onclick="seleccionarVista('detras')">
-                            <img id="detras" src="../imagenes/sueternegrodetras.png" alt="Detrás">
+                            <img id="detras" src="imagenes/sueternegrodetras.png" alt="Detrás">
                             <p>Detrás</p>
                         </div>
                         <div class="view-option" onclick="seleccionarVista('derecha')">
-                            <img id="derecha" src="../imagenes/sueternegroderecha.png" alt="Derecha">
+                            <img id="derecha" src="imagenes/sueternegroderecha.png" alt="Derecha">
                             <p>Derecha</p>
                         </div>
                         <div class="view-option" onclick="seleccionarVista('izquierda')">
-                            <img id="izquierda" src="../imagenes/sueternegroizquierda.png" alt="Izquierda">
+                            <img id="izquierda" src="imagenes/sueternegroizquierda.png" alt="Izquierda">
                             <p>Izquierda</p>
                         </div>
                     </div>
@@ -223,7 +223,7 @@ if ($cliente !== null) {
                         </div>
                         <br><br><br>
 
-                        <form action="../conexiones/Guardardiseño.php" method="post" onsubmit="return Enviaralcarro()">
+                        <form action="conexiones/Guardardiseño.php" method="post" onsubmit="return Enviaralcarro()">
                             <p style="font-size: 20px; padding-left: 100px;"><strong>Talla:</strong></p>
                             <input type="hidden" id="nombreArchivo" name="nombreArchivo">
                             <input type="hidden" name="talla" id="inputTalla">
@@ -262,28 +262,28 @@ if ($cliente !== null) {
         // Mapeo de imágenes para cada color
         const imagenesPorColor = {
             azul: {
-                delante: "../imagenes/sueterazuldelante.png",
-                detras: "../imagenes/sueterazuldetras.png",
-                derecha: "../imagenes/sueterazulderecha.png",
-                izquierda: "../imagenes/sueterazulizquierda.png"
+                delante: "imagenes/sueterazuldelante.png",
+                detras: "imagenes/sueterazuldetras.png",
+                derecha: "imagenes/sueterazulderecha.png",
+                izquierda: "imagenes/sueterazulizquierda.png"
             },
             verde: {
-                delante: "../imagenes/sueterverdedelante.png",
-                detras: "../imagenes/sueterverdedetras.png",
-                derecha: "../imagenes/sueterverdederecha.png",
-                izquierda: "../imagenes/sueterverdeizquierda.png"
+                delante: "imagenes/sueterverdedelante.png",
+                detras: "imagenes/sueterverdedetras.png",
+                derecha: "imagenes/sueterverdederecha.png",
+                izquierda: "imagenes/sueterverdeizquierda.png"
             },
             negro: {
-                delante: "../imagenes/sueternegrodelante.png",
-                detras: "../imagenes/sueternegrodetras.png",
-                derecha: "../imagenes/sueternegroderecha.png",
-                izquierda: "../imagenes/sueternegroizquierda.png"
+                delante: "imagenes/sueternegrodelante.png",
+                detras: "imagenes/sueternegrodetras.png",
+                derecha: "imagenes/sueternegroderecha.png",
+                izquierda: "imagenes/sueternegroizquierda.png"
             },
             rojo: {
-                delante: "../imagenes/sueterrojodelante.png",
-                detras: "../imagenes/sueterrojodetras.png",
-                derecha: "../imagenes/sueterrojoderecha.png",
-                izquierda: "../imagenes/sueterrojoizquierda.png"
+                delante: "imagenes/sueterrojodelante.png",
+                detras: "imagenes/sueterrojodetras.png",
+                derecha: "imagenes/sueterrojoderecha.png",
+                izquierda: "imagenes/sueterrojoizquierda.png"
             },
             amarillo: {
                 delante: "https://image.spreadshirtmedia.net/image-server/v1/products/T6A7?width=300&height=300&viewId=1.png",

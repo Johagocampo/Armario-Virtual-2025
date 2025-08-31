@@ -1,6 +1,6 @@
 <?php
 
-include "../conexiones/conexion.php";
+include "conexiones/conexion.php";
 
 $total_registros = 0;
 $cliente = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : null;
@@ -29,7 +29,7 @@ if ($cliente !== null) {
     <title>Hombre</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../principales/css/index_css.css">
+    <link rel="stylesheet" href="css/index_css.css">
 </head>
 
 <header>
@@ -38,7 +38,7 @@ if ($cliente !== null) {
         <div class="container">
                 <div class="d-flex align-items-end ms-5">
                     <a class="logo" href="main.php">
-                        <img src="../imagenes/Armario Virtual.png" alt="">
+                        <img src="imagenes/Armario Virtual.png" alt="">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse justify-content-center" id="mi-menu">
@@ -72,7 +72,7 @@ if ($cliente !== null) {
                                 <a href="Login.html">Iniciar Sesión</a>
                                 <a href="Registro.html">Registrarme</a>
                                 <a href="perfil.php" id="perfil" style="display: none;">Perfil</a>
-                                <a href="../conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
+                                <a href="conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
                             </div>
                         </div>
         
@@ -221,16 +221,16 @@ if ($cliente !== null) {
             <br>
             <div class="row" style="height: 150px;">
                 <div class="col-3 zoom-container custom-col">
-                    <a href="../categorias- hombres/Basicos.html"><img src="../imagenes/basicoss.png" class="img-fluid zoom-image" alt="Imagen 1"> </a>
+                    <a href="categorias- hombres/Basicos.html"><img src="imagenes/basicoss.png" class="img-fluid zoom-image" alt="Imagen 1"> </a>
                 </div>
                 <div class="col-3 zoom-container custom-col" >
-                    <a href="../categorias- hombres/Oversize.html"><img src="../imagenes/oversize.png" class="img-fluid zoom-image" alt="Imagen 2"></a>
+                    <a href="categorias- hombres/Oversize.html"><img src="imagenes/oversize.png" class="img-fluid zoom-image" alt="Imagen 2"></a>
                 </div>
                 <div class="col-3 zoom-container custom-col" >
-                    <a href="../categorias- hombres/camisillas.html"><img src="../imagenes/CAMISILLA.png" class="img-fluid zoom-image" alt="Imagen 3"></a>
+                    <a href="categorias- hombres/camisillas.html"><img src="imagenes/CAMISILLA.png" class="img-fluid zoom-image" alt="Imagen 3"></a>
                 </div>
                 <div class="col-3 zoom-container custom-col">
-                    <a href="../categorias- hombres/buzos.html"><img src="../imagenes/buzos.png" class="img-fluid zoom-image" alt="Imagen 4"></a>
+                    <a href="categorias- hombres/buzos.html"><img src="imagenes/buzos.png" class="img-fluid zoom-image" alt="Imagen 4"></a>
                 </div>
             </div>
         </div>

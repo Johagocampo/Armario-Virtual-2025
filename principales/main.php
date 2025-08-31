@@ -1,6 +1,6 @@
 <?php
 
-include "../conexiones/conexion.php";
+include "conexiones/conexion.php";
 
 $total_registros = 0;
 $cliente = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : null;
@@ -25,7 +25,7 @@ if ($cliente !== null) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../imagenes/logo_tienda.png">
+    <link rel="icon" href="imagenes/logo_tienda.png">
     <title>Inicio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -38,7 +38,7 @@ if ($cliente !== null) {
         <div class="container">
                 <div class="d-flex align-items-end ms-5">
                     <a class="logo" href="main.php">
-                        <img src="../imagenes/Armario Virtual.png" alt="">
+                        <img src="imagenes/Armario Virtual.png" alt="">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse justify-content-center" id="mi-menu">
@@ -72,7 +72,7 @@ if ($cliente !== null) {
                                 <a href="Login.html">Iniciar Sesión</a>
                                 <a href="Registro.html">Registrarme</a>
                                 <a href="perfil.php" id="perfil" style="display: none;">Perfil</a>
-                                <a href="../conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
+                                <a href="conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
                             </div>
                         </div>
         
@@ -224,19 +224,19 @@ if ($cliente !== null) {
 
             <div class="col-lg zoom-container custom-col">
                 <a href="hombress.php">
-                    <img src="../imagenes/sueter_imagen.png"
+                    <img src="imagenes/sueter_imagen.png"
                     class="img-fluid zoom-image" alt="Imagen 1">
                 </a>
             </div>
             <div class="col-lg zoom-container custom-col">
                 <a href="mujer.php">
-                    <img src="../imagenes/sueter_mujer.png"
+                    <img src="imagenes/sueter_mujer.png"
                     class="img-fluid zoom-image" alt="Imagen 1">
                 </a>
             </div>
             <div class="col-lg zoom-container custom-col">
                 <a href="Diseño.php">
-                    <img src="../imagenes/diseño_propio.png"
+                    <img src="imagenes/diseño_propio.png"
                     class="img-fluid zoom-image" alt="Imagen 1">
                 </a>
             </div>
