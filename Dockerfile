@@ -3,6 +3,9 @@ FROM php:8.1-apache
 # Copiar los archivos desde la carpeta principales al directorio raíz web de Apache
 COPY principales/ /var/www/html/
 
+# Instalar la extensión mysqli
+RUN docker-php-ext-install mysqli
+
 # Dar permisos adecuados al usuario www-data
 RUN chown -R www-data:www-data /var/www/html
 
