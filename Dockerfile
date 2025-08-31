@@ -7,7 +7,7 @@ COPY principales/ /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 
 # Cambiar el archivo de inicio si usas main.php
-RUN echo "DirectoryIndex main.html" >> /etc/apache2/apache2.conf
+RUN echo "DirectoryIndex index.html" >> /etc/apache2/apache2.conf
 
 # Cambiar Apache para que escuche en el puerto 8080 (Render lo requiere)
 RUN sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
