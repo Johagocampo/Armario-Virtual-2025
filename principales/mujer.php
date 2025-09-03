@@ -1,6 +1,6 @@
 <?php
 
-include "../conexiones/conexion.php";
+include "conexiones/conexion.php";
 
 $total_registros = 0;
 $cliente = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : null;
@@ -29,7 +29,7 @@ if ($cliente !== null) {
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Female_symbol_%28heavy_pink%29.svg/1200px-Female_symbol_%28heavy_pink%29.svg.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/index_css.css">
+    <link rel="stylesheet" href="css/index_css.css">
 </head>
 
 <header>
@@ -38,7 +38,7 @@ if ($cliente !== null) {
         <div class="container">
             <div class="d-flex align-items-end ms-5">
                 <a class="logo" href="main.php">
-                    <img src="../imagenes/Armario Virtual.png" alt="">
+                    <img src="imagenes/Armario Virtual.png" alt="">
                 </a>
             </div>
             <div class="collapse navbar-collapse justify-content-center" id="mi-menu">
@@ -71,7 +71,7 @@ if ($cliente !== null) {
                         <a href="Login.html">Iniciar Sesión</a>
                         <a href="Registro.html">Registrarme</a>
                         <a href="perfil.php" id="perfil" style="display: none;">Perfil</a>
-                        <a href="../conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
+                        <a href="conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
                     </div>
                 </div>
 
@@ -210,16 +210,16 @@ if ($cliente !== null) {
             <br>
             <div class="row" style="height: 150px;">
                 <div class="col-3 zoom-container custom-col">
-                    <img src="../imagenes/basicos (1).png" class="img-fluid zoom-image" alt="Imagen 1">
+                    <img src="imagenes/basicos (1).png" class="img-fluid zoom-image" alt="Imagen 1">
                 </div>
                 <div class="col-3 zoom-container custom-col" >
-                    <img src="../imagenes/oversize (1).png" class="img-fluid zoom-image" alt="Imagen 2">
+                    <img src="imagenes/oversize (1).png" class="img-fluid zoom-image" alt="Imagen 2">
                 </div>
                 <div class="col-3 zoom-container custom-col" >
-                    <img src="../imagenes/croptop.png" class="img-fluid zoom-image" alt="Imagen 3">
+                    <img src="imagenes/croptop.png" class="img-fluid zoom-image" alt="Imagen 3">
                 </div>
                 <div class="col-3 zoom-container custom-col">
-                    <img src="../imagenes/buszosmm (1).png" class="img-fluid zoom-image" alt="Imagen 4">
+                    <img src="imagenes/buszosmm (1).png" class="img-fluid zoom-image" alt="Imagen 4">
                 </div>
             </div>
         </div>

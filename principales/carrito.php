@@ -1,6 +1,6 @@
 <?php
 
-include "../conexiones/conexion.php";
+include "conexiones/conexion.php";
 
 $cliente = $_SESSION['nombre'];
 
@@ -43,12 +43,12 @@ $suma_total_formateada = number_format($suma_total, 0, '.', '.');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../imagenes/logo_tienda.png">
+    <link rel="icon" href="imagenes/logo_tienda.png">
     <title>Carrito</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="../css/index_css.css">
+        <link rel="stylesheet" href="css/index_css.css">
 
 
         <nav class="navbar navbar-expand-lg">
@@ -56,7 +56,7 @@ $suma_total_formateada = number_format($suma_total, 0, '.', '.');
             <div class="container">
                 <div class="d-flex align-items-end ms-5">
                     <a class="logo" href="main.php">
-                        <img src="../imagenes/Armario Virtual.png" alt="">
+                        <img src="imagenes/Armario Virtual.png" alt="">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse justify-content-center" id="mi-menu">
@@ -89,7 +89,7 @@ $suma_total_formateada = number_format($suma_total, 0, '.', '.');
                             <a href="Login.html">Iniciar Sesión</a>
                             <a href="Registro.html">Registrarme</a>
                             <a href="perfil.php" id="perfil" style="display: none;">Perfil</a>
-                            <a href="../conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
+                            <a href="conexiones/cerrar.php" id="cerrar" style="display: none;">Cerrar Sesión</a>
                         </div>
                     </div>
     
@@ -147,7 +147,7 @@ $suma_total_formateada = number_format($suma_total, 0, '.', '.');
                             <?php while ($row = $result->fetch_assoc()) { ?>
                             <tr>
 
-                            <form method="post" action= "../conexiones/procesar.php" onsubmit="return validarInput()">
+                            <form method="post" action= "conexiones/procesar.php" onsubmit="return validarInput()">
 
                                 <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>">
                                 <input type="hidden" id="cantidad" name="cantidad" value="<?php echo $row['cantidad']; ?>">
@@ -235,9 +235,9 @@ $suma_total_formateada = number_format($suma_total, 0, '.', '.');
 </body>
 
 
-<script src="../assets/js/plugins/jquery/dist/jquery.min.js"></script>
-<script src="../assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/js/argon-dashboard.min.js?v=1.1.2"></script>
+<script src="assets/js/plugins/jquery/dist/jquery.min.js"></script>
+<script src="assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/argon-dashboard.min.js?v=1.1.2"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
 <script>
     window.TrackJS &&

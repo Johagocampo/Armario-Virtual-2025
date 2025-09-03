@@ -1,6 +1,6 @@
 <?php
 
-include "../conexiones/conexion.php";
+include "conexiones/conexion.php";
 
 // Obtenemos el nombre desde la sesión
 $nombre = $_SESSION['nombre'];
@@ -27,9 +27,9 @@ $user = $result->fetch_assoc();
   <link rel="icon" href="https://cdn-icons-png.freepik.com/256/17873/17873255.png?semt=ais_hybrid" type="image/png">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
-  <link href="../assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
-  <link href="../assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
-  <link href="../assets/css/argon-dashboard.css?v=1.1.2" rel="stylesheet" />
+  <link href="assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
+  <link href="assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  <link href="assets/css/argon-dashboard.css?v=1.1.2" rel="stylesheet" />
 </head>
 
 <body >
@@ -64,7 +64,7 @@ $user = $result->fetch_assoc();
           <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
             
             <div class="dropdown-divider"></div>
-            <a href="../conexiones/cerrar.php" class="dropdown-item">
+            <a href="conexiones/cerrar.php" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
@@ -92,7 +92,7 @@ $user = $result->fetch_assoc();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="../conexiones/tables.php">
+            <a class="nav-link " href="conexiones/tables.php">
               <i class="ni ni-bullet-list-67 text-red"></i> Tables
             </a>
           </li>
@@ -124,7 +124,7 @@ $user = $result->fetch_assoc();
             </a>
             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
               <div class="dropdown-divider"></div>
-              <a href="../conexiones/cerrar.php" class="dropdown-item">
+              <a href="conexiones/cerrar.php" class="dropdown-item">
                 <i class="ni ni-user-run"></i>
                 <span>Logout</span>
               </a>
@@ -314,13 +314,13 @@ $user = $result->fetch_assoc();
     </div>
   </div>
   <!--   Core   -->
-  <script src="../assets/js/plugins/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/plugins/jquery/dist/jquery.min.js"></script>
+  <script src="assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!--   Optional JS   -->
-  <script src="../assets/js/plugins/chart.js/dist/Chart.min.js"></script>
-  <script src="../assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
+  <script src="assets/js/plugins/chart.js/dist/Chart.min.js"></script>
+  <script src="assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
   <!--   Argon JS   -->
-  <script src="../assets/js/argon-dashboard.min.js?v=1.1.2"></script>
+  <script src="assets/js/argon-dashboard.min.js?v=1.1.2"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
     window.TrackJS &&
